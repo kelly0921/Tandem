@@ -12,51 +12,52 @@ const downloadCsvButton = document.querySelector("#downloadCsv");
 const downloadJsonButton = document.querySelector("#downloadJson");
 
 const STORAGE_KEY = "tandem_waitlist_submissions";
+const ANALYTICS_STORAGE_KEY = "tandem_validation_events";
 
 const archetypeScores = {
   Builder: 0,
-  Anchor: 0,
+  Stabilizer: 0,
   Accelerator: 0,
   Creator: 0,
   Operator: 0,
-  Allocator: 0,
+  Explorer: 0,
 };
 
 const scoringRules = {
   careerMode: {
-    "Stable and growing": ["Anchor", "Operator"],
+    "Stable and growing": ["Stabilizer", "Operator"],
     "Building something": ["Builder"],
     "Scaling fast": ["Accelerator", "Builder"],
-    "Exploring / transitioning": ["Creator", "Builder"],
+    "Exploring / transitioning": ["Explorer", "Creator"],
     "Creator / portfolio career": ["Creator"],
-    "High-income career track": ["Accelerator", "Allocator"],
-    Other: ["Operator"],
+    "Early-career growth track": ["Accelerator", "Operator"],
+    Other: ["Explorer"],
   },
   riskTolerance: {
-    "Low risk / stability first": ["Anchor"],
-    "Moderate risk": ["Operator", "Allocator"],
+    "Low risk / stability first": ["Stabilizer"],
+    "Moderate risk": ["Operator", "Stabilizer"],
     "High risk / high upside": ["Builder", "Accelerator"],
     "Currently taking a big career risk": ["Builder"],
-    "Prefer a partner who balances my risk level": ["Anchor", "Allocator"],
+    "Prefer a partner who balances my risk level": ["Stabilizer", "Operator"],
   },
   lifestyleRhythm: {
-    "Predictable weekdays": ["Anchor", "Operator"],
+    "Predictable weekdays": ["Stabilizer", "Operator"],
     "Startup chaos": ["Builder"],
     "Travel-heavy": ["Accelerator", "Creator"],
     "Social NYC schedule": ["Creator", "Accelerator"],
-    "Quiet and focused": ["Operator", "Allocator"],
-    "Flexible / varies by season": ["Creator", "Builder"],
+    "Quiet and focused": ["Operator", "Stabilizer"],
+    "Flexible / varies by season": ["Explorer", "Creator"],
   },
   partnerEnergy: {
     Ambitious: ["Accelerator"],
-    "Emotionally grounded": ["Anchor"],
-    Stable: ["Anchor"],
+    "Emotionally grounded": ["Stabilizer"],
+    Stable: ["Stabilizer"],
     Creative: ["Creator"],
-    Strategic: ["Allocator"],
+    Strategic: ["Operator"],
     Adventurous: ["Builder"],
-    "Financially thoughtful": ["Allocator"],
+    Curious: ["Explorer"],
     Independent: ["Operator"],
-    Supportive: ["Anchor", "Operator"],
+    Supportive: ["Stabilizer", "Operator"],
     "Builder mindset": ["Builder"],
   },
 };
@@ -67,6 +68,27 @@ function setupTallyEmbed() {
   tallyFrame.src = TALLY_FORM_URL;
   tallyEmbed.hidden = false;
   form.hidden = true;
+  trackEvent("tally_embed_loaded", { urlConfigured: true });
+}
+
+function trackEvent(name, metadata = {}) {
+  const event = {
+    name,
+    metadata,
+    path: window.location.pathname,
+    timestamp: new Date().toISOString(),
+  };
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: name, ...metadata });
+
+  try {
+    const events = JSON.parse(localStorage.getItem(ANALYTICS_STORAGE_KEY) || "[]");
+    events.push(event);
+    localStorage.setItem(ANALYTICS_STORAGE_KEY, JSON.stringify(events.slice(-100)));
+  } catch {
+    // Analytics should never block the validation flow.
+  }
 }
 
 function getStoredSubmissions() {
@@ -202,13 +224,45 @@ form.addEventListener("submit", (event) => {
   const submission = { ...data, archetype };
 
   saveSubmission(submission);
+  trackEvent("waitlist_completed", {
+    archetype,
+    mixerInterest: data.mixerInterest,
+    careerMode: data.careerMode,
+  });
   archetypeResult.textContent = archetype;
   form.hidden = true;
   successState.hidden = false;
   successState.focus();
 });
 
-downloadCsvButton.addEventListener("click", downloadCsv);
-downloadJsonButton.addEventListener("click", downloadJson);
+document.querySelectorAll("[data-analytics]").forEach((element) => {
+  element.addEventListener("click", () => {
+    trackEvent(element.dataset.analytics, { label: element.textContent.trim() });
+  });
+});
 
+form.addEventListener(
+  "input",
+  () => {
+    trackEvent("waitlist_started");
+  },
+  { once: true }
+);
+
+form.elements.mixerInterest.addEventListener("change", (event) => {
+  if (event.target.value) {
+    trackEvent("mixer_interest_selected", { mixerInterest: event.target.value });
+  }
+});
+
+downloadCsvButton.addEventListener("click", () => {
+  trackEvent("submissions_exported", { format: "csv" });
+  downloadCsv();
+});
+downloadJsonButton.addEventListener("click", () => {
+  trackEvent("submissions_exported", { format: "json" });
+  downloadJson();
+});
+
+trackEvent("landing_view");
 setupTallyEmbed();

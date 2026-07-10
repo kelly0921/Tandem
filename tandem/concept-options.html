@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tandem Concept Formula</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@650;750&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #241c18;
+        --muted: #6d625d;
+        --paper: #fffaf4;
+        --panel: #fffefe;
+        --soft: #f7eee7;
+        --line: #eadbd0;
+        --rose: #b95b52;
+        --rose-soft: #f3d5cd;
+        --sage: #61776b;
+        --sage-soft: #dce9df;
+        --strategy: #315f66;
+        --strategy-soft: #d8e8e8;
+        --gold: #d6a646;
+        --blue: #597783;
+        --cream: #f3dfc6;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(135deg, rgba(216, 232, 232, 0.76), transparent 31rem),
+          radial-gradient(circle at 88% 18%, rgba(243, 213, 205, 0.5), transparent 24rem),
+          linear-gradient(180deg, var(--paper), var(--soft) 52%, var(--paper));
+        color: var(--ink);
+      }
+
+      main {
+        width: min(1220px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: clamp(2rem, 5vw, 4.5rem) 0;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: minmax(0, 0.74fr) minmax(280px, 0.42fr);
+        gap: clamp(1.5rem, 4vw, 3rem);
+        align-items: end;
+        margin-bottom: clamp(1.4rem, 4vw, 2.4rem);
+      }
+
+      .eyebrow,
+      .label {
+        margin: 0;
+        color: var(--strategy);
+        font-size: 0.76rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        overflow-wrap: anywhere;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        letter-spacing: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", Georgia, serif;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin-top: 0.65rem;
+        font-size: clamp(3rem, 6.6vw, 6.4rem);
+        line-height: 0.93;
+      }
+
+      header p:last-child {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.02rem;
+        line-height: 1.65;
+      }
+
+      .concept {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 254, 252, 0.9);
+        box-shadow: 0 24px 70px rgba(48, 32, 28, 0.08);
+      }
+
+      .formula {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+        gap: clamp(1rem, 3vw, 2rem);
+        align-items: stretch;
+        padding: clamp(1.1rem, 3vw, 1.6rem);
+      }
+
+      .formula-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.3rem;
+        padding: clamp(0.25rem, 1vw, 0.6rem);
+      }
+
+      .formula-copy h2 {
+        margin-top: 0.65rem;
+        font-size: clamp(2rem, 4.5vw, 4.5rem);
+        line-height: 0.96;
+        white-space: nowrap;
+      }
+
+      .formula-copy p {
+        margin: 0.85rem 0 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.58;
+      }
+
+      .takeaway {
+        display: inline-flex;
+        width: fit-content;
+        min-height: 36px;
+        align-items: center;
+        padding: 0.48rem 0.72rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper);
+        color: var(--rose);
+        font-size: 0.82rem;
+        font-weight: 900;
+      }
+
+      .visual {
+        display: grid;
+        grid-template-rows: minmax(230px, auto) auto;
+        gap: 0.85rem;
+      }
+
+      .formula-stage {
+        display: grid;
+        grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr);
+        gap: clamp(0.7rem, 2vw, 1.2rem);
+        align-items: center;
+        min-height: 270px;
+        padding: clamp(0.9rem, 2.4vw, 1.4rem);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          linear-gradient(90deg, rgba(243, 213, 205, 0.42), transparent 45%, rgba(216, 232, 232, 0.72)),
+          var(--paper);
+      }
+
+      .role {
+        position: relative;
+        overflow: hidden;
+        min-height: 205px;
+        display: grid;
+        grid-template-columns: 84px minmax(0, 1fr);
+        align-content: center;
+        align-items: center;
+        gap: 0.85rem;
+        padding: clamp(0.85rem, 2vw, 1.15rem);
+        border: 1px solid rgba(234, 219, 208, 0.95);
+        border-radius: 8px;
+        background: rgba(255, 254, 252, 0.78);
+      }
+
+      .role::before {
+        content: "";
+        position: absolute;
+        inset: auto -18px -18px auto;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        background: rgba(185, 91, 82, 0.13);
+      }
+
+      .role:nth-child(3)::before {
+        background: rgba(49, 95, 102, 0.16);
+      }
+
+      .role-text {
+        position: relative;
+        z-index: 1;
+      }
+
+      .role-svg {
+        position: relative;
+        z-index: 1;
+        width: 78px;
+        height: 78px;
+        display: grid;
+        place-items: center;
+        border: 2px solid var(--ink);
+        border-radius: 18px;
+        background: var(--panel);
+      }
+
+      .role-svg svg {
+        width: 52px;
+        height: 52px;
+        stroke: var(--ink);
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
+      .role-svg .accent-fill {
+        fill: var(--rose);
+        stroke: var(--ink);
+      }
+
+      .role-svg.stability .accent-fill {
+        fill: var(--strategy);
+      }
+
+      .role h3 {
+        font-size: clamp(1.55rem, 2.6vw, 2.6rem);
+        line-height: 0.98;
+      }
+
+      .role p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .plus {
+        display: grid;
+        width: 54px;
+        height: 54px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--paper);
+        font-size: 2rem;
+        font-weight: 900;
+      }
+
+      .combo-strip {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.58rem;
+      }
+
+      .combo {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 0.72rem;
+        align-items: center;
+        min-height: 74px;
+        padding: 0.66rem 0.76rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 14px 38px rgba(48, 32, 28, 0.06);
+      }
+
+      .prop-pair {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+
+      .icon-tile {
+        display: inline-grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--paper);
+        flex: 0 0 auto;
+      }
+
+      .icon-tile svg {
+        width: 21px;
+        height: 21px;
+        stroke: var(--ink);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
+      .icon-tile svg .fill-rose {
+        fill: var(--rose-soft);
+      }
+
+      .icon-tile svg .fill-sage {
+        fill: var(--strategy-soft);
+      }
+
+      .icon-tile svg .fill-gold {
+        fill: rgba(214, 166, 70, 0.35);
+      }
+
+      .prop-plus {
+        color: var(--strategy);
+        font-weight: 900;
+      }
+
+      .combo strong {
+        display: block;
+        font-size: 0.92rem;
+        line-height: 1.18;
+      }
+
+      .combo p {
+        margin: 0.2rem 0 0;
+        color: var(--muted);
+        font-size: 0.84rem;
+        line-height: 1.32;
+      }
+
+      .bottom-line {
+        display: grid;
+        grid-template-columns: minmax(0, 0.7fr) minmax(260px, 0.3fr);
+        gap: 1rem;
+        align-items: center;
+        padding: clamp(1rem, 2.5vw, 1.3rem);
+        border-top: 1px solid var(--line);
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .bottom-line h2 {
+        max-width: 760px;
+        font-size: clamp(1.9rem, 4vw, 4.1rem);
+        line-height: 0.96;
+      }
+
+      .bottom-line p {
+        margin: 0;
+        color: rgba(255, 250, 244, 0.72);
+        line-height: 1.55;
+      }
+
+      @media (max-width: 1020px) {
+        header,
+        .formula,
+        .bottom-line {
+          grid-template-columns: 1fr;
+        }
+
+      }
+
+      @media (max-width: 680px) {
+        main {
+          width: min(100% - 1rem, 1220px);
+        }
+
+        .formula-stage,
+        .combo-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .formula-copy h2 {
+          white-space: normal;
+        }
+
+        .combo {
+          grid-template-columns: 1fr;
+          justify-items: start;
+        }
+
+        .plus {
+          justify-self: center;
+          width: 42px;
+          height: 42px;
+          font-size: 1.45rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <p class="eyebrow">Tandem concept section review</p>
+          <h1>The third direction, without characters.</h1>
+        </div>
+        <p>
+          This keeps the stronger structure from the earlier Complement Formula option: a big
+          idea first, then fast pairings that make the concept feel specific and instantly useful.
+        </p>
+      </header>
+
+      <section class="concept" aria-label="Complement formula concept">
+        <div class="formula">
+          <div class="formula-copy">
+            <div>
+              <p class="label">Complementary ambition</p>
+              <h2>Different strengths, same direction.</h2>
+              <p>
+                Tandem is not asking people to date a clone of their ambition. It is helping them
+                recognize the person whose life strategy makes theirs stronger.
+              </p>
+            </div>
+            <span class="takeaway">Best for quick "oh, I get it" scanning</span>
+          </div>
+
+          <div class="visual">
+            <div class="formula-stage">
+              <article class="role">
+                <span class="role-svg upside" aria-hidden="true">
+                  <svg viewBox="0 0 48 48">
+                    <path class="accent-fill" d="M24 5l8 10-4 18h-8l-4-18 8-10z" />
+                    <path d="M17 34h14" />
+                    <path d="M15 40h18" />
+                    <path d="M12 22l-5 8" />
+                    <path d="M36 22l5 8" />
+                    <path d="M24 5v9" />
+                  </svg>
+                </span>
+                <div class="role-text">
+                  <h3>Upside</h3>
+                  <p>Risk, momentum, experiments, big swings.</p>
+                </div>
+              </article>
+              <span class="plus">+</span>
+              <article class="role">
+                <span class="role-svg stability" aria-hidden="true">
+                  <svg viewBox="0 0 48 48">
+                    <path class="accent-fill" d="M8 14h32v26H8z" />
+                    <path d="M8 22h32" />
+                    <path d="M16 10v8" />
+                    <path d="M32 10v8" />
+                    <path d="M15 30h18" />
+                    <path d="M15 36h11" />
+                    <path d="M31 35l4 4 7-10" />
+                  </svg>
+                </span>
+                <div class="role-text">
+                  <h3>Stability</h3>
+                  <p>Rhythm, structure, predictability, follow-through.</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="combo-strip">
+              <article class="combo">
+                <div class="prop-pair">
+                  <span class="icon-tile" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path class="fill-rose" d="M12 2c3 2 5 5 5 9l-3 8h-4l-3-8c0-4 2-7 5-9z" />
+                      <path d="M12 2c3 2 5 5 5 9l-3 8h-4l-3-8c0-4 2-7 5-9z" />
+                      <path d="M9 16l-3 4" />
+                      <path d="M15 16l3 4" />
+                      <path d="M12 8h.01" />
+                    </svg>
+                  </span>
+                  <span class="prop-plus">+</span>
+                  <span class="icon-tile" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <rect class="fill-sage" x="4" y="5" width="16" height="15" rx="2" />
+                      <rect x="4" y="5" width="16" height="15" rx="2" />
+                      <path d="M4 10h16" />
+                      <path d="M8 3v4" />
+                      <path d="M16 3v4" />
+                      <path d="M8 14h3" />
+                      <path d="M13 14h3" />
+                    </svg>
+                  </span>
+                </div>
+                <div class="combo-copy">
+                  <strong>Startup energy + steady rhythm</strong>
+                  <p>One swings for equity, one keeps the plan steady.</p>
+                </div>
+              </article>
+              <article class="combo">
+                <div class="prop-pair">
+                  <span class="icon-tile" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <circle class="fill-rose" cx="10.5" cy="10.5" r="6.5" />
+                      <circle cx="10.5" cy="10.5" r="6.5" />
+                      <path d="M15.5 15.5L21 21" />
+                      <path d="M8 10.5h5" />
+                      <path d="M10.5 8v5" />
+                    </svg>
+                  </span>
+                  <span class="prop-plus">+</span>
+                  <span class="icon-tile" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path class="fill-gold" d="M4 17l4-5 4 3 6-8 2 2-7 10-5-3-3 4z" />
+                      <path d="M4 19h16" />
+                      <path d="M5 15l4-5 4 3 6-8" />
+                      <path d="M17 5h2v2" />
+                    </svg>
+                  </span>
+                </div>
+                <div class="combo-copy">
+                  <strong>Opportunity finder + investing brain</strong>
+                  <p>One spots openings, one knows where upside belongs.</p>
+                </div>
+              </article>
+              <article class="combo">
+                <div class="prop-pair">
+                  <span class="icon-tile" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path class="fill-rose" d="M3 11l9-7 9 7v9H6v-9z" />
+                      <path d="M3 11l9-7 9 7" />
+                      <path d="M6 10v10h12V10" />
+                      <path d="M10 20v-6h4v6" />
+                    </svg>
+                  </span>
+                  <span class="prop-plus">+</span>
+                  <span class="icon-tile" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <rect class="fill-sage" x="4" y="5" width="16" height="14" rx="2" />
+                      <rect x="4" y="5" width="16" height="14" rx="2" />
+                      <path d="M8 10h8" />
+                      <path d="M8 14h5" />
+                      <path d="M16 15h2" />
+                      <path d="M7 19v2" />
+                      <path d="M17 19v2" />
+                    </svg>
+                  </span>
+                </div>
+                <div class="combo-copy">
+                  <strong>Real estate operator + high-income W2</strong>
+                  <p>One builds assets, one brings predictable income.</p>
+                </div>
+              </article>
+              <article class="combo">
+                <div class="prop-pair">
+                  <span class="icon-tile" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path class="fill-rose" d="M4 8h4l2-3h4l2 3h4v11H4z" />
+                      <path d="M4 8h4l2-3h4l2 3h4v11H4z" />
+                      <circle cx="12" cy="13.5" r="3.5" />
+                    </svg>
+                  </span>
+                  <span class="prop-plus">+</span>
+                  <span class="icon-tile" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <rect class="fill-sage" x="5" y="3" width="14" height="18" rx="2" />
+                      <rect x="5" y="3" width="14" height="18" rx="2" />
+                      <path d="M9 8l1.5 1.5L14 6" />
+                      <path d="M9 14l1.5 1.5L14 12" />
+                      <path d="M15 9h1" />
+                      <path d="M15 15h1" />
+                    </svg>
+                  </span>
+                </div>
+                <div class="combo-copy">
+                  <strong>Audience builder + follow-through</strong>
+                  <p>One creates momentum, one keeps life operating.</p>
+                </div>
+              </article>
+              <article class="combo">
+                <div class="prop-pair">
+                  <span class="icon-tile" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path class="fill-gold" d="M7 11a5 5 0 0110 0v5l2 3H5l2-3z" />
+                      <path d="M7 11a5 5 0 0110 0v5l2 3H5l2-3z" />
+                      <path d="M10 21h4" />
+                      <path d="M17 5l2-2" />
+                      <path d="M19 7h2" />
+                    </svg>
+                  </span>
+                  <span class="prop-plus">+</span>
+                  <span class="icon-tile" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path class="fill-sage" d="M3 7h7l2 3h9v10H3z" />
+                      <path d="M3 7h7l2 3h9v10H3z" />
+                      <path d="M7 14h9" />
+                      <path d="M7 17h6" />
+                    </svg>
+                  </span>
+                </div>
+                <div class="combo-copy">
+                  <strong>High-commission sales + salaried stability</strong>
+                  <p>One takes the variable bet, one grounds the plan.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom-line">
+          <h2>Who you build with changes what you can build.</h2>
+          <p>
+            This can sit on the landing page as the "now I understand the idea" moment before the
+            quiz CTA.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

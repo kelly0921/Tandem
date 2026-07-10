@@ -1,6 +1,6 @@
 # Tandem validation MVP
 
-Tandem is a lightweight public landing page, Ambition Archetype quiz, and waitlist flow for early NYC validation.
+Tandem is a lightweight public landing page, Ambition Archetype quiz, and waitlist flow for early NYC validation with ambitious singles ages 21-30.
 
 ## Update the Tally form link
 
@@ -12,6 +12,8 @@ const TALLY_FORM_URL = "https://tally.so/embed/your-form-id";
 
 When a Tally URL is present, the page shows the embedded Tally form and hides the temporary local form.
 
+Connect Tally before sending public traffic. The built-in form is only a local validation fallback.
+
 ## Test locally
 
 Open `tandem/index.html` in a browser, or run a static server from this folder if you prefer a local URL.
@@ -19,6 +21,20 @@ Open `tandem/index.html` in a browser, or run a static server from this folder i
 ## Temporary form notes
 
 The fallback form stores submissions in the visitor's browser using `localStorage` and exposes CSV/JSON downloads after signup. This is useful for local validation testing, but should be replaced with Tally before public traffic if live response collection is needed.
+
+## Analytics hooks
+
+The page records lightweight validation events to `window.dataLayer` and mirrors the last 100 events in `localStorage` under `tandem_validation_events`. Add Google Tag Manager, GA, Plausible, or another provider later and map these event names:
+
+- `landing_view`
+- `cta_header_quiz`
+- `cta_hero_quiz`
+- `cta_hero_how_it_works`
+- `cta_footer_quiz`
+- `waitlist_started`
+- `mixer_interest_selected`
+- `waitlist_completed`
+- `submissions_exported`
 
 ## Brand direction
 
@@ -39,16 +55,12 @@ Meet someone building in your direction.
 
 The Connected Intent logo direction is saved for future reference:
 
-- `assets/tandem-connected-intent-logo.png`
-- `assets/tandem-connected-intent-mark.png`
-- `assets/references/option-3-connected-intent-logo-with-tagline.png`
+- `assets/brand/tandem-logo-option3.png`
+- `assets/brand/tandem-mark-option3.png`
+- `assets/brand/tandem-favicon-option3.png`
 - `assets/references/option-3-connected-intent-tile.png`
-- `assets/references/option-3-connected-intent-mark-reference.png`
-- `assets/references/option-3-connected-intent-mark-transparent.png`
-- `assets/tandem-connected-intent-logo.svg`
-- `assets/tandem-connected-intent-mark.svg`
 
-Use option 3 from the first logo proposal as the reference direction. The PNG reference crops are the visual source of truth for the intended mark: an elegant ampersand-like connection, with a dark loop and a muted rose stroke. The `logo-with-tagline` PNG is the current brand lockup reference with the selected tagline pairing, and the transparent mark PNG should be used when placing the mark on matching backgrounds. The SVG files are working drafts and should be refined against the PNG reference before final brand use.
+Use option 3 from the first logo proposal as the reference direction. The files in `assets/brand/` are the active site assets, all derived from the correct Connected Intent proposal. The remaining reference tile is kept only as the original visual source.
 
 ## Validation metrics to watch
 
