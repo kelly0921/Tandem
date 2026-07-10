@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Tandem Connected Intent mark</title>
+  <desc id="desc">Option 3 Connected Intent mark: an ampersand-like connection between two complementary paths.</desc>
+  <path
+    d="M63 64C50 50 29 53 22 70C15 87 30 103 48 96C61 91 68 78 63 64ZM63 64C76 78 97 75 104 58C111 41 96 25 78 32C65 37 58 50 63 64Z"
+    fill="none"
+    stroke="#2f2421"
+    stroke-width="7.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M65 64C51 46 51 26 67 22C83 18 94 33 84 48C74 63 54 67 45 82C37 96 50 108 64 95"
+    fill="none"
+    stroke="#c85f68"
+    stroke-width="7.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M64 64C73 75 82 86 94 97"
+    fill="none"
+    stroke="#c85f68"
+    stroke-width="7.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
