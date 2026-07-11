@@ -36,6 +36,19 @@ For ambitious people in NYC, compatibility is not only about photos, prompts, lo
 
 Tandem tests whether ambition and life-direction compatibility can become a meaningful dating signal.
 
+## Current landing page structure
+
+The homepage should make the concept understandable within the first screen:
+
+- Hero: `Dating for complementary ambition.` with the supporting line `Meet someone building in your direction.`
+- Audience qualifier: for intentional singles in or near NYC, in their 20s, dating intentionally, and building or choosing a next direction.
+- Concept explanation: Tandem is dating, not networking. It helps people understand ambition type, lifestyle rhythm, risk tolerance, and future direction before trying to build a relationship.
+- Complementary ambition section: `Different strengths, same direction.` using the core formula `Upside + Stability`.
+- Combo examples: concrete pairings that make the concept feel relatable, not abstract.
+- Archetypes: six ambition types with paired character illustrations.
+- How it works: take the quiz, get an archetype, join the early list.
+- Early validation: honest signal that the product is still being tested.
+
 ## MVP scope
 
 Included:
@@ -43,9 +56,10 @@ Included:
 - Public landing page
 - Clear quiz CTA
 - Ambition Archetype quiz / waitlist form
+- Typeform-ready result flow
 - Success state after signup
 - Local CSV and JSON export fallback
-- Tally embed placeholder
+- External form embed/link placeholder
 - Lightweight analytics hooks
 - Transparent early-validation status
 
@@ -96,6 +110,17 @@ Reference asset:
 
 - `assets/references/option-3-connected-intent-tile.png`
 
+Active visual assets:
+
+- `assets/illustrations/tandem-hero-asian-illustrated-couple.png`
+- `assets/illustrations/tandem-complementary-ambition-couple.png`
+- `assets/archetypes/tandem-archetype-builder-v2.png`
+- `assets/archetypes/tandem-archetype-stabilizer-v2.png`
+- `assets/archetypes/tandem-archetype-accelerator-v2.png`
+- `assets/archetypes/tandem-archetype-creator-v2.png`
+- `assets/archetypes/tandem-archetype-operator-v2.png`
+- `assets/archetypes/tandem-archetype-explorer-v2.png`
+
 ## Archetypes
 
 Builder:
@@ -115,6 +140,22 @@ Turns ambition into systems, plans, follow-through, and everyday execution.
 
 Explorer:
 Actively learns, tests paths, and expands while still choosing a direction.
+
+## Complementary ambition framework
+
+Core concept:
+
+Upside + Stability
+
+One person may bring risk, momentum, experiments, and big swings. The other may bring rhythm, structure, predictability, and follow-through. The point is not that every couple needs opposite careers. The point is that compatible ambition often means different strengths supporting the same direction.
+
+Current combo examples:
+
+- Startup energy + steady rhythm: one swings for equity, one protects the runway.
+- Audience builder + follow-through: one creates momentum, one keeps life operating.
+- Entrepreneurial eye + capital strategy: one spots opportunities, one knows where to place the bet.
+- Real estate hours + high-income W2: one unlocks the vehicle, one strengthens the base.
+- High-commission sales + salaried stability: one takes the variable bet, one grounds the plan.
 
 ## Validation goal
 
@@ -158,17 +199,53 @@ Current analytics hooks:
 
 Preferred public launch form:
 
-Tally.
+Typeform.
 
 Reason:
 
-Tally is flexible, lightweight, easy to update, and appropriate for a fast validation MVP. It should replace the local fallback form before public traffic.
+The quiz is part of the product experience, not just a lead form. Typeform is a better fit for Tandem because it feels more polished, supports a one-question-at-a-time personality-test rhythm, and can make the result reveal feel closer to an MBTI-style experience. Tally remains a lightweight fallback for simple waitlist collection, but it feels too plain for the final quiz experience.
 
 Current implementation:
 
-- `TALLY_FORM_URL` is configured in `tandem/script.js`.
-- If a Tally URL is provided, the Tally embed appears and the fallback form hides.
-- If no URL is provided, the local form stores submissions in the visitor browser and allows CSV/JSON export.
+- `TALLY_FORM_URL` is still configured in `tandem/script.js` from the earlier Tally plan.
+- Before public traffic, replace or generalize this to a Typeform embed/link.
+- Until Typeform is connected, the local fallback form stores submissions in the visitor browser and allows CSV/JSON export.
+
+## Final quiz structure
+
+The quiz should feel insightful, specific, and personality-test-like. It should not sound like a generic survey, and response wording should avoid obvious archetype keywords.
+
+Recommended flow:
+
+1. Eligibility screen: confirm single status, NYC or near-NYC location, age range, and intentional dating interest.
+2. Archetype quiz: use situational questions that reveal how someone handles ambition, risk, structure, change, support, and direction.
+3. Scoring: equal-weight scoring by default, with each answer adding one point to one archetype. Do not show labels to the user.
+4. Randomization: randomize response order whenever the form tool allows it so the pattern is not obvious.
+5. Tie handling: include a tiebreaker question that appears only when needed, or use a deterministic tiebreaker rule in the scoring setup. Avoid final ties.
+6. Dating reality check: ask what kind of ambition mismatch would frustrate them, what the next few years feel like, and what they wish a partner understood.
+7. Concept validation: ask which combo feels relatable, whether they would join the waitlist, and whether they would consider a curated NYC mixer.
+8. Result: show the archetype first, then collect name, email, optional social link, and optional feedback.
+
+Result pages:
+
+- Builder
+- Stabilizer
+- Accelerator
+- Creator
+- Operator
+- Explorer
+
+## Visual QA screenshots
+
+Captured from the local site at `http://127.0.0.1:4173/tandem/` on July 10, 2026:
+
+- `docs/tandem-home-full.png`
+- `docs/tandem-home-hero.png`
+- `docs/tandem-concept-section.png`
+- `docs/tandem-archetypes-section.png`
+- `docs/tandem-how-it-works-section.png`
+- `docs/tandem-waitlist-section.png`
+- `docs/tandem-mobile-home.png`
 
 ## Portfolio positioning
 
@@ -185,14 +262,14 @@ Suggested portfolio bullets:
 - Built a public landing page, quiz flow, and waitlist system for early product validation.
 - Developed the Ambition Archetype framework to test compatibility around career mode, risk, lifestyle, and partner energy.
 - Created a warm premium brand direction and Connected Intent logo system.
-- Added Tally-ready form integration and lightweight analytics hooks for measuring validation demand.
+- Added form integration scaffolding and lightweight analytics hooks for measuring validation demand.
 - Kept the MVP intentionally scoped to landing page, quiz, and waitlist only, avoiding premature app features.
 
 ## Current next steps
 
-- Connect the real Tally form URL.
+- Build the Typeform quiz and result pages using the final question structure.
+- Replace the local fallback form with a Typeform embed or quiz link before public traffic.
 - Add a real analytics provider such as Plausible, GA, or GTM.
-- Commit and push latest changes.
 - Deploy with Cloudflare Pages.
 - Add Open Graph social preview metadata.
 - Do one final mobile polish pass before sharing publicly.
