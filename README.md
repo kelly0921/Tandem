@@ -7,12 +7,12 @@ Tandem is a lightweight public landing page, Ambition Archetype quiz, and waitli
 Open `tandem/script.js` and replace the empty `TALLY_FORM_URL` value:
 
 ```js
-const TALLY_FORM_URL = "https://tally.so/embed/your-form-id";
+const TALLY_FORM_URL = "https://tally.so/embed/0QyVD6?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
 ```
 
-When a Tally URL is present, the page shows the embedded Tally form and hides the temporary local form.
+When a Tally URL is present, the page shows the embedded Tally form and hides the temporary local form. The current public form is `https://tally.so/r/0QyVD6`.
 
-Connect Tally before sending public traffic. The built-in form is only a local validation fallback.
+Keep the Tally link connected before sending public traffic. The built-in form is only a local validation fallback.
 
 ## Test locally
 

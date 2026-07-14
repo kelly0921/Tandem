@@ -1,6 +1,4 @@
-// Replace this with a real Tally URL when the external quiz is ready.
-// Example: const TALLY_FORM_URL = "https://tally.so/embed/your-form-id";
-const TALLY_FORM_URL = "";
+const TALLY_FORM_URL = "https://tally.so/embed/0QyVD6?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
 
 const form = document.querySelector("#waitlistForm");
 const successState = document.querySelector("#successState");
@@ -13,6 +11,7 @@ const downloadJsonButton = document.querySelector("#downloadJson");
 
 const STORAGE_KEY = "tandem_waitlist_submissions";
 const ANALYTICS_STORAGE_KEY = "tandem_validation_events";
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const archetypeScores = {
   Builder: 0,
@@ -69,6 +68,52 @@ function setupTallyEmbed() {
   tallyEmbed.hidden = false;
   form.hidden = true;
   trackEvent("tally_embed_loaded", { urlConfigured: true });
+}
+
+function setupScrollReveals() {
+  const revealSelectors = [
+    ".dating-signal-inner > *",
+    ".premise-inner > *",
+    ".aha-card > .eyebrow",
+    ".aha-card > h2",
+    ".aha-subcopy",
+    ".formula-stage",
+    ".combo-card",
+    ".aha-line",
+    ".archetype-bridge > div",
+    ".section-heading > *",
+    ".archetype-card",
+    ".steps-copy > *",
+    ".steps-list li",
+    ".form-intro > *",
+    ".tally-shell",
+    ".waitlist-form",
+  ];
+
+  const revealElements = [...new Set(revealSelectors.flatMap((selector) => [...document.querySelectorAll(selector)]))];
+
+  revealElements.forEach((element, index) => {
+    element.classList.add("reveal-on-scroll");
+    element.style.setProperty("--reveal-delay", `${Math.min((index % 6) * 70, 350)}ms`);
+  });
+
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealElements.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -12% 0px", threshold: 0.12 }
+  );
+
+  revealElements.forEach((element) => observer.observe(element));
 }
 
 function trackEvent(name, metadata = {}) {
@@ -266,3 +311,4 @@ downloadJsonButton.addEventListener("click", () => {
 
 trackEvent("landing_view");
 setupTallyEmbed();
+setupScrollReveals();

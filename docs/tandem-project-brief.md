@@ -56,7 +56,7 @@ Included:
 - Public landing page
 - Clear quiz CTA
 - Ambition Archetype quiz / waitlist form
-- Typeform-ready result flow
+- Tally-ready quiz and result flow
 - Success state after signup
 - Local CSV and JSON export fallback
 - External form embed/link placeholder
@@ -199,17 +199,18 @@ Current analytics hooks:
 
 Preferred public launch form:
 
-Typeform.
+Tally.
 
 Reason:
 
-The quiz is part of the product experience, not just a lead form. Typeform is a better fit for Tandem because it feels more polished, supports a one-question-at-a-time personality-test rhythm, and can make the result reveal feel closer to an MBTI-style experience. Tally remains a lightweight fallback for simple waitlist collection, but it feels too plain for the final quiz experience.
+Tally is the best fit for the validation stage because unlimited responses matter more than polished form-native animation. The quiz should still feel like a branded personality test, so the website should carry the visual design while Tally handles collection, branching, scoring, and response storage.
 
 Current implementation:
 
-- `TALLY_FORM_URL` is still configured in `tandem/script.js` from the earlier Tally plan.
-- Before public traffic, replace or generalize this to a Typeform embed/link.
-- Until Typeform is connected, the local fallback form stores submissions in the visitor browser and allows CSV/JSON export.
+- `TALLY_FORM_URL` is configured in `tandem/script.js`.
+- Current Tally form: `https://tally.so/r/0QyVD6`.
+- The site embeds the form with a transparent background so it can sit inside the Tandem-styled quiz section.
+- If the Tally URL is removed, the local fallback form stores submissions in the visitor browser and allows CSV/JSON export.
 
 ## Final quiz structure
 
@@ -267,8 +268,8 @@ Suggested portfolio bullets:
 
 ## Current next steps
 
-- Build the Typeform quiz and result pages using the final question structure.
-- Replace the local fallback form with a Typeform embed or quiz link before public traffic.
+- Finish designing the Tally quiz with section breaks, result reveal pages, and archetype scoring.
+- Test the embedded Tally form on desktop and mobile.
 - Add a real analytics provider such as Plausible, GA, or GTM.
 - Deploy with Cloudflare Pages.
 - Add Open Graph social preview metadata.
