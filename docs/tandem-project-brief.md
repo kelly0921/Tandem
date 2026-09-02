@@ -2,7 +2,7 @@
 
 ## One-line summary
 
-Tandem is an early-stage NYC dating experiment for ambitious singles in their 20s who care about lifestyle, ambition, and future direction, not just photos and job titles.
+Tandem is a curated NYC dating community for intentional singles who care about lifestyle, ambition, rhythm, and the kind of life they want to build with someone.
 
 ## Product name
 
@@ -12,67 +12,66 @@ Tandem
 
 Dating for complementary ambition.
 
-## Supporting line
+## Supporting idea
 
-Meet someone building in your direction.
+Who you build with changes what you can build.
 
-## Current stage
+## Current direction
 
-Early validation MVP.
+Tandem is an IRL-first dating community, not a full dating app. The current business model is intentionally lightweight: curated NYC dating experiences, selectively assembled groups, partner/community co-hosts, and occasional invitations rather than an always-on platform.
 
-This is a landing page, Ambition Archetype quiz, and waitlist flow only. It is not a live dating app yet.
+Tandem owns the concept, curation, participant experience, and community layer.
 
 ## Target audience
 
-Ambitious NYC singles ages 21-30, especially students, new grads, interns, early-career professionals, startup employees, creators, side-project builders, and young professionals who are dating intentionally.
+Intentional NYC singles in their 20s and early 30s who are actively building a life they care about. This includes early-career professionals, founders, creatives, operators, students, new grads, people seeking stability, people changing direction, and people who care about family, craft, lifestyle, or meaningful work.
 
-This audience is still forming career identities, which makes ambition type and lifestyle compatibility especially interesting. Tandem focuses on direction: what someone is building, how they think about risk, what kind of lifestyle they want, and what partner energy complements them.
+Ambition should not be framed only as prestige, income, startup status, or career maximization. For Tandem, ambition means the way someone wants to build a life.
 
 ## Product thesis
 
-Most dating apps ask what someone does. Tandem asks what era of life they are in.
+Most dating profiles show what someone does. They rarely show whether two lives can actually move together.
 
-For ambitious people in NYC, compatibility is not only about photos, prompts, location, or job title. It also depends on career mode, lifestyle rhythm, risk tolerance, emotional maturity, relationship intention, and future direction.
+Compatibility for intentional NYC singles depends on attraction and values, but also on lifestyle rhythm, risk tolerance, independence, emotional steadiness, ambition style, and future direction.
 
-Tandem tests whether ambition and life-direction compatibility can become a meaningful dating signal.
+Tandem tests whether these hidden compatibility signals can create better real-world dating experiences.
 
 ## Current landing page structure
 
-The homepage should make the concept understandable within the first screen:
+- Hero: positions Tandem as `A curated NYC dating community` and keeps `Dating for complementary ambition.`
+- Dating signal: preserves `Dating, not networking.` and clarifies that Tandem is not professional networking.
+- Premise: preserves the idea that job titles do not tell you if two lives fit.
+- Complementary ambition: keeps `Different strengths, same direction.` and `Who you build with changes what you can build.`
+- Archetypes: keeps the six illustrated archetypes, reframed as reflective language rather than a proven algorithm.
+- How it works: community interest, curated invitations, IRL experience, continued connection.
+- Founding list: embeds the Tally founding-list form and removes browser-only demo behavior.
+- Privacy: adds concise discretion language and a working privacy note.
+- Partner section: introduces a small collaboration pathway for NYC communities, membership organizations, and venues.
 
-- Hero: `Dating for complementary ambition.` with the supporting line `Meet someone building in your direction.`
-- Audience qualifier: for intentional singles in or near NYC, in their 20s, dating intentionally, and building or choosing a next direction.
-- Concept explanation: Tandem is dating, not networking. It helps people understand ambition type, lifestyle rhythm, risk tolerance, and future direction before trying to build a relationship.
-- Complementary ambition section: `Different strengths, same direction.` using the core formula `Upside + Stability`.
-- Combo examples: concrete pairings that make the concept feel relatable, not abstract.
-- Archetypes: six ambition types with paired character illustrations.
-- How it works: take the quiz, get an archetype, join the early list.
-- Early validation: honest signal that the product is still being tested.
-
-## MVP scope
-
-Included:
+## Included scope
 
 - Public landing page
-- Clear quiz CTA
-- Ambition Archetype quiz / waitlist form
-- Tally-ready quiz and result flow
-- Success state after signup
-- Local CSV and JSON export fallback
-- External form embed/link placeholder
+- Curated community positioning
+- Founding NYC list CTA
+- Secondary archetype experience
+- Tally founding-list embed and direct link
+- Partner collaboration CTA
+- Basic privacy note
 - Lightweight analytics hooks
-- Transparent early-validation status
+- Responsive layout and animation layer
 
-Not included:
+## Not included
 
-- Login
-- User accounts
-- Swiping
-- Matching
-- Chat
-- Mobile app
-- Backend database
-- Payment or subscription flows
+- Swipe interface
+- Messaging
+- Browsable profiles
+- Full matching backend
+- Subscriptions
+- Member dashboard
+- Community forum
+- Event management platform
+- Proprietary compatibility algorithm
+- B2B sales site
 
 ## Brand direction
 
@@ -82,17 +81,20 @@ Tone:
 - Premium
 - Intentional
 - Dating-first
-- Honest
+- Discreet
 - NYC-coded without cliche
 - Ambitious without sounding corporate
+- Community-first without sounding like an events agency
 
 Avoid:
 
 - LinkedIn dating
+- Founder networking
+- Recruiting
 - Finance app language
 - Power-couple language
-- Fake launched-startup claims
-- Swiping/matching claims before the product exists
+- Fake scarcity
+- Claims that archetypes predict relationship success
 
 Logo direction:
 
@@ -123,6 +125,8 @@ Active visual assets:
 
 ## Archetypes
 
+The archetypes are a brand and conversation system. They are not a scientific compatibility algorithm and should not be presented as a soulmate score.
+
 Builder:
 Starts projects, companies, communities, side hustles, or ideas.
 
@@ -151,90 +155,103 @@ One person may bring risk, momentum, experiments, and big swings. The other may 
 
 Current combo examples:
 
-- Startup energy + steady rhythm: one swings for equity, one protects the runway.
+- Startup energy + steady rhythm: one swings for equity, one keeps the plan steady.
 - Audience builder + follow-through: one creates momentum, one keeps life operating.
-- Entrepreneurial eye + capital strategy: one spots opportunities, one knows where to place the bet.
-- Real estate hours + high-income W2: one unlocks the vehicle, one strengthens the base.
+- Opportunity finder + investing brain: one spots openings, one knows where upside belongs.
+- Real estate operator + high-income W2: one builds assets, one brings predictable income.
 - High-commission sales + salaried stability: one takes the variable bet, one grounds the plan.
 
-## Validation goal
+## Founding list strategy
 
-Initial validation target:
+The founding list is the main conversion path.
 
-100 qualified NYC singles ages 21-30 completing the quiz and joining the waitlist.
+Purpose:
 
-A qualified signup means:
+- Validate demand from intentional NYC singles
+- Understand potential founding cohorts
+- Invite people to small curated NYC editions
+- Learn what kinds of groups feel balanced and compelling
 
-- In or near NYC
-- Single
-- In the intended age range
-- Understands the concept
-- Open to being contacted for feedback, events, or early matching
+Recommended Tally fields:
+
+- First name
+- Last name
+- Email
+- Age
+- NYC neighborhood or general location
+- Gender
+- Who are you interested in meeting?
+- What are you currently looking for?
+- Career/life mode
+- Desired pace of life
+- Lifestyle rhythm
+- Stability vs exploration
+- What matters most in a partner
+- Would you attend a curated Tandem experience in NYC?
+- General availability
+- How did you hear about Tandem?
+- Optional referral
+- Optional LinkedIn or Instagram
+
+## Quiz strategy
+
+The archetype quiz should remain a low-friction brand experience. It can help people understand Tandem and make them curious about the community, but it should not be the entire application for an event.
+
+Users should be able to:
+
+- Take the archetype quiz and then join the list
+- Join the founding list without taking the quiz first
+
+## Partner strategy
+
+Tandem can be shared with NYC community organizers, membership organizations, and venue collaborators.
+
+Partner positioning:
+
+- Founding collaboration
+- Co-host a founding edition
+- Tandem handles concept, curation, and participant experience
+- Partners help bring together people from their communities
+
+Do not publish pricing or imply mature institutional partnerships before they exist.
+
+## Privacy and discretion
+
+Privacy language should be concise, warm, and clear.
+
+Communicate that:
+
+- Responses are used for Tandem community curation and future invitations
+- Private dating and preference data is not publicly displayed
+- Partner communities do not receive private form answers without consent
+- Future-event or marketing consent should be explicit in the form where appropriate
+
+The current site includes a working privacy note at `tandem/privacy.html`. This should become a fuller policy before broader public launch.
 
 ## Metrics to track
 
 - Landing page visits
-- CTA clicks
-- Quiz starts
-- Quiz completions
-- Waitlist signups
-- Qualified NYC signups
-- Mixer interest
-- Feedback interview interest
+- Founding-list CTA clicks
+- Tally form opens
+- Tally form completions
+- Qualified NYC singles
+- Curated experience interest
+- Availability patterns
+- Referral interest
+- Partner/community inquiries
 - Qualitative comments
 
 Current analytics hooks:
 
 - `landing_view`
-- `cta_header_quiz`
-- `cta_hero_quiz`
-- `cta_hero_how_it_works`
-- `cta_footer_quiz`
-- `waitlist_started`
-- `mixer_interest_selected`
-- `waitlist_completed`
-- `submissions_exported`
-
-## Form strategy
-
-Preferred public launch form:
-
-Tally.
-
-Reason:
-
-Tally is the best fit for the validation stage because unlimited responses matter more than polished form-native animation. The quiz should still feel like a branded personality test, so the website should carry the visual design while Tally handles collection, branching, scoring, and response storage.
-
-Current implementation:
-
-- `TALLY_FORM_URL` is configured in `tandem/script.js`.
-- Current Tally form: `https://tally.so/r/0QyVD6`.
-- The site embeds the form with a transparent background so it can sit inside the Tandem-styled quiz section.
-- If the Tally URL is removed, the local fallback form stores submissions in the visitor browser and allows CSV/JSON export.
-
-## Final quiz structure
-
-The quiz should feel insightful, specific, and personality-test-like. It should not sound like a generic survey, and response wording should avoid obvious archetype keywords.
-
-Recommended flow:
-
-1. Eligibility screen: confirm single status, NYC or near-NYC location, age range, and intentional dating interest.
-2. Archetype quiz: use situational questions that reveal how someone handles ambition, risk, structure, change, support, and direction.
-3. Scoring: equal-weight scoring by default, with each answer adding one point to one archetype. Do not show labels to the user.
-4. Randomization: randomize response order whenever the form tool allows it so the pattern is not obvious.
-5. Tie handling: include a tiebreaker question that appears only when needed, or use a deterministic tiebreaker rule in the scoring setup. Avoid final ties.
-6. Dating reality check: ask what kind of ambition mismatch would frustrate them, what the next few years feel like, and what they wish a partner understood.
-7. Concept validation: ask which combo feels relatable, whether they would join the waitlist, and whether they would consider a curated NYC mixer.
-8. Result: show the archetype first, then collect name, email, optional social link, and optional feedback.
-
-Result pages:
-
-- Builder
-- Stabilizer
-- Accelerator
-- Creator
-- Operator
-- Explorer
+- `founding_form_loaded`
+- `cta_header_join`
+- `cta_hero_join`
+- `cta_hero_archetype`
+- `cta_form_open`
+- `cta_form_archetypes`
+- `cta_footer_join`
+- `cta_partner`
 
 ## Visual QA screenshots
 
@@ -256,21 +273,22 @@ Tandem - Dating for Complementary Ambition
 
 Suggested portfolio summary:
 
-Designed and built a lightweight validation MVP for Tandem, a NYC dating concept exploring whether ambition type, lifestyle rhythm, risk tolerance, and future direction can become meaningful dating signals for ambitious singles in their 20s.
+Repositioned Tandem from a future dating-app MVP into an IRL-first curated dating community for intentional NYC singles, using archetypes, complementary ambition, and thoughtful application flow to test demand for small curated dating experiences.
 
 Suggested portfolio bullets:
 
-- Built a public landing page, quiz flow, and waitlist system for early product validation.
-- Developed the Ambition Archetype framework to test compatibility around career mode, risk, lifestyle, and partner energy.
-- Created a warm premium brand direction and Connected Intent logo system.
-- Added form integration scaffolding and lightweight analytics hooks for measuring validation demand.
-- Kept the MVP intentionally scoped to landing page, quiz, and waitlist only, avoiding premature app features.
+- Built and evolved a polished landing page for a curated NYC dating community.
+- Developed the Ambition Archetype framework as a playful compatibility vocabulary, not a deterministic matching algorithm.
+- Designed the founding-list journey around real-world gatherings, thoughtful curation, and community-first validation.
+- Added partner collaboration positioning for communities, membership organizations, and venues.
+- Removed browser-only demo form behavior and shifted the public flow to Tally.
 
 ## Current next steps
 
-- Finish designing the Tally quiz with section breaks, result reveal pages, and archetype scoring.
-- Test the embedded Tally form on desktop and mobile.
+- Update the live Tally form fields to match the founding-list strategy.
+- Confirm the partner inquiry email or replace the CTA with a dedicated partner Tally form.
 - Add a real analytics provider such as Plausible, GA, or GTM.
+- Refresh screenshots after the community-first revision.
 - Deploy with Cloudflare Pages.
 - Add Open Graph social preview metadata.
 - Do one final mobile polish pass before sharing publicly.
