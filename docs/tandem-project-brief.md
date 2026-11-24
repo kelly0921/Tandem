@@ -20,7 +20,9 @@ Who you build with changes what you can build.
 
 Tandem is an IRL-first dating community, not a full dating app. The current business model is intentionally lightweight: curated NYC dating experiences, selectively assembled groups, partner/community co-hosts, and occasional invitations rather than an always-on platform.
 
-Tandem owns the concept, curation, participant experience, and community layer.
+Tandem owns the concept, curation, participant experience, community layer, and native data collection experience.
+
+The archetype quiz should feel like a lightweight personality test: no signup, name, email, gender, location, dating preferences, or social profiles are required to get a result. After the result reveal, visitors can optionally enter an email to save/send the result. The founding-list form is separate and private, not anonymous, because Tandem needs contact information and basic dating context to review fit and send invitations.
 
 ## Target audience
 
@@ -36,26 +38,34 @@ Compatibility for intentional NYC singles depends on attraction and values, but 
 
 Tandem tests whether these hidden compatibility signals can create better real-world dating experiences.
 
-## Current landing page structure
+## Current site structure
 
 - Hero: positions Tandem as `A curated NYC dating community` and keeps `Dating for complementary ambition.`
 - Dating signal: preserves `Dating, not networking.` and clarifies that Tandem is not professional networking.
 - Premise: preserves the idea that job titles do not tell you if two lives fit.
 - Complementary ambition: keeps `Different strengths, same direction.` and `Who you build with changes what you can build.`
 - Archetypes: keeps the six illustrated archetypes, reframed as reflective language rather than a proven algorithm.
-- How it works: community interest, curated invitations, IRL experience, continued connection.
-- Founding list: embeds the Tally founding-list form and removes browser-only demo behavior.
-- Privacy: adds concise discretion language and a working privacy note.
-- Partner section: introduces a small collaboration pathway for NYC communities, membership organizations, and venues.
+- How it works: take the quiz, get an archetype, join the list, and get considered for curated IRL editions.
+- Homepage next-step cards: direct users to the archetype quiz first, with direct founding-list and partner paths still available.
+- `tandem/quiz.html`: native archetype quiz, anonymous, one-question-at-a-time, self-oriented, built for brand discovery, with optional result email capture after the reveal.
+- `tandem/join.html`: four-step native Tandem application/interest flow.
+- `tandem/partners.html`: native inquiry form for NYC communities, membership organizations, venues, and event partners.
+- `tandem/privacy.html`: explains quiz/device storage, D1-backed form submissions, private dating context, and deletion requests.
 
 ## Included scope
 
 - Public landing page
 - Curated community positioning
 - Founding NYC list CTA
-- Secondary archetype experience
-- Tally founding-list embed and direct link
-- Partner collaboration CTA
+- Anonymous Ambition Archetype Quiz
+- Primary and secondary archetype result state
+- Result-to-community signup handoff
+- Native founding-list form
+- Optional result-email capture and transactional email endpoint
+- Cloudflare Pages Function endpoints
+- Cloudflare D1 schema for participant applications and partner inquiries
+- Developer-only CSV export scripts
+- Partner collaboration form
 - Basic privacy note
 - Lightweight analytics hooks
 - Responsive layout and animation layer
@@ -65,13 +75,15 @@ Tandem tests whether these hidden compatibility signals can create better real-w
 - Swipe interface
 - Messaging
 - Browsable profiles
+- Participant accounts
 - Full matching backend
+- Admin dashboard
+- Event ticketing
 - Subscriptions
 - Member dashboard
 - Community forum
-- Event management platform
-- Proprietary compatibility algorithm
-- B2B sales site
+- Custom CMS
+- Third-party form builders
 
 ## Brand direction
 
@@ -127,6 +139,8 @@ Active visual assets:
 
 The archetypes are a brand and conversation system. They are not a scientific compatibility algorithm and should not be presented as a soulmate score.
 
+The quiz now measures how a participant approaches ambition and building a life, not qualities they want in a romantic partner. Partner preferences are collected only in the community form for cohort viability.
+
 Builder:
 Starts projects, companies, communities, side hustles, or ideas.
 
@@ -144,6 +158,29 @@ Turns ambition into systems, plans, follow-through, and everyday execution.
 
 Explorer:
 Actively learns, tests paths, and expands while still choosing a direction.
+
+## Quiz strategy
+
+The archetype quiz is a low-friction brand experience. It can help people understand Tandem and make them curious about the community, but it is not an application.
+
+Quiz principles:
+
+- anonymous
+- no name or email
+- no gender or dating preferences
+- no location or social profiles
+- self-oriented questions only
+- randomized answer display order
+- primary and secondary archetype result
+- deterministic tie-breaking for reproducible results
+- no scientific precision claims
+- optional post-result email capture without gating the reveal
+
+Users can:
+
+- take the archetype quiz and then join the list
+- join the founding list without taking the quiz first
+- email themselves the quiz result without joining the founding list
 
 ## Complementary ambition framework
 
@@ -172,39 +209,52 @@ Purpose:
 - Invite people to small curated NYC editions
 - Learn what kinds of groups feel balanced and compelling
 
-Recommended Tally fields:
+Native founding form screens:
 
-- First name
-- Last name
-- Email
-- Age
-- NYC neighborhood or general location
-- Gender
-- Who are you interested in meeting?
-- What are you currently looking for?
-- Career/life mode
-- Desired pace of life
-- Lifestyle rhythm
-- Stability vs exploration
-- What matters most in a partner
-- Would you attend a curated Tandem experience in NYC?
-- General availability
-- How did you hear about Tandem?
-- Optional referral
-- Optional LinkedIn or Instagram
+1. You: first name, email, age range, location, optional neighborhood.
+2. Who you are hoping to meet: gender identity, interested in meeting, relationship intention.
+3. Tandem: event interest, availability, what made Tandem interesting, acquisition source.
+4. Optional context: optional social link, carried archetype result if available, future invitations consent.
 
-## Quiz strategy
+The community form submits to:
 
-The archetype quiz should remain a low-friction brand experience. It can help people understand Tandem and make them curious about the community, but it should not be the entire application for an event.
+```text
+POST /api/tandem/community
+```
 
-Users should be able to:
+The D1 table is:
 
-- Take the archetype quiz and then join the list
-- Join the founding list without taking the quiz first
+```text
+tandem_community_applications
+```
+
+## Result email strategy
+
+Do not gate quiz results behind an email address. Show the result first, then offer a small optional save/send module.
+
+Result email purpose:
+
+- Let people keep their archetype result
+- Capture lightweight quiz-to-contact intent without forcing application
+- Keep marketing consent separate from the transactional result email
+
+The result email form submits to:
+
+```text
+POST /api/tandem/result
+```
+
+The D1 table is:
+
+```text
+tandem_result_emails
+```
+
+Email delivery uses a Cloudflare Email Sending binding named `EMAIL` when configured. If email delivery is not configured, the request is stored with `delivery_status = stored`.
 
 ## Partner strategy
 
-Tandem can be shared with NYC community organizers, membership organizations, and venue collaborators.
+Tandem can be shared with NYC community organizers, membership organizations, venue collaborators, and event partners.
 
 Partner positioning:
 
@@ -213,7 +263,41 @@ Partner positioning:
 - Tandem handles concept, curation, and participant experience
 - Partners help bring together people from their communities
 
+The partner inquiry form submits to:
+
+```text
+POST /api/tandem/partners
+```
+
+The D1 table is:
+
+```text
+tandem_partner_inquiries
+```
+
 Do not publish pricing or imply mature institutional partnerships before they exist.
+
+## Architecture
+
+Current lightweight architecture:
+
+```text
+Native Tandem frontend -> Cloudflare Pages Function -> Cloudflare D1
+```
+
+Binding:
+
+```text
+TANDEM_DB
+```
+
+Important constraints:
+
+- D1 is never exposed directly to browser clients.
+- There is no public GET route for submissions.
+- Applicant data is not stored in browser local storage.
+- Browser storage is used only for anonymous quiz progress/result handoff.
+- Export scripts are developer-only and write to gitignored `exports/`.
 
 ## Privacy and discretion
 
@@ -221,41 +305,60 @@ Privacy language should be concise, warm, and clear.
 
 Communicate that:
 
-- Responses are used for Tandem community curation and future invitations
-- Private dating and preference data is not publicly displayed
-- Partner communities do not receive private form answers without consent
-- Future-event or marketing consent should be explicit in the form where appropriate
+- The quiz is anonymous.
+- Founding form responses are used for Tandem community curation and future invitations.
+- Private dating and preference data is not publicly displayed.
+- Partner communities do not receive participant-level form answers without consent.
+- Aggregated or anonymized patterns may be used to improve the concept.
+- People can request deletion by emailing hello@tandem-dating.com.
 
 The current site includes a working privacy note at `tandem/privacy.html`. This should become a fuller policy before broader public launch.
 
 ## Metrics to track
 
 - Landing page visits
-- Founding-list CTA clicks
-- Tally form opens
-- Tally form completions
+- Archetype quiz starts
+- Archetype quiz completions
+- Archetype result distribution
+- Result email starts and requests
+- Founding-list starts
+- Founding-list completions
 - Qualified NYC singles
 - Curated experience interest
 - Availability patterns
-- Referral interest
+- Referral shares
 - Partner/community inquiries
 - Qualitative comments
 
 Current analytics hooks:
 
-- `landing_view`
-- `founding_form_loaded`
-- `cta_header_join`
-- `cta_hero_join`
-- `cta_hero_archetype`
-- `cta_form_open`
-- `cta_form_archetypes`
-- `cta_footer_join`
-- `cta_partner`
+- `tandem_home_view`
+- `tandem_quiz_view`
+- `tandem_join_view`
+- `tandem_partners_view`
+- `tandem_privacy_view`
+- `archetype_quiz_started`
+- `archetype_quiz_completed`
+- `archetype_result_builder`
+- `archetype_result_stabilizer`
+- `archetype_result_accelerator`
+- `archetype_result_creator`
+- `archetype_result_operator`
+- `archetype_result_explorer`
+- `result_email_started`
+- `result_email_requested`
+- `result_email_sent`
+- `founding_form_started`
+- `founding_form_completed`
+- `partner_inquiry_started`
+- `partner_inquiry_completed`
+- `referral_share_clicked`
+
+Do not send emails, gender, dating preferences, relationship intention, social links, or free-text responses into analytics.
 
 ## Visual QA screenshots
 
-Captured from the local site at `http://127.0.0.1:4173/tandem/` on July 10, 2026:
+Previously captured from the local site at `http://127.0.0.1:4173/tandem/` on July 10, 2026:
 
 - `docs/tandem-home-full.png`
 - `docs/tandem-home-hero.png`
@@ -265,6 +368,8 @@ Captured from the local site at `http://127.0.0.1:4173/tandem/` on July 10, 2026
 - `docs/tandem-waitlist-section.png`
 - `docs/tandem-mobile-home.png`
 
+New screenshots should be captured after the native form implementation is visually approved.
+
 ## Portfolio positioning
 
 Suggested portfolio title:
@@ -273,22 +378,25 @@ Tandem - Dating for Complementary Ambition
 
 Suggested portfolio summary:
 
-Repositioned Tandem from a future dating-app MVP into an IRL-first curated dating community for intentional NYC singles, using archetypes, complementary ambition, and thoughtful application flow to test demand for small curated dating experiences.
+Repositioned Tandem from a future dating-app MVP into an IRL-first curated dating community for intentional NYC singles, using archetypes, complementary ambition, native form flows, and lightweight Cloudflare/D1 infrastructure to test demand for small curated dating experiences.
 
 Suggested portfolio bullets:
 
 - Built and evolved a polished landing page for a curated NYC dating community.
 - Developed the Ambition Archetype framework as a playful compatibility vocabulary, not a deterministic matching algorithm.
+- Designed a native anonymous quiz that returns primary and secondary ambition archetypes.
 - Designed the founding-list journey around real-world gatherings, thoughtful curation, and community-first validation.
-- Added partner collaboration positioning for communities, membership organizations, and venues.
-- Removed browser-only demo form behavior and shifted the public flow to Tally.
+- Added a lightweight Cloudflare Pages Functions and D1 submission layer without building unnecessary app infrastructure.
+- Added partner collaboration positioning for communities, membership organizations, venues, and event partners.
+- Removed third-party form builder dependency and browser-only applicant persistence.
 
 ## Current next steps
 
-- Update the live Tally form fields to match the founding-list strategy.
-- Confirm the partner inquiry email or replace the CTA with a dedicated partner Tally form.
+- Create the production Cloudflare D1 database.
+- Apply `migrations/0001_tandem_native_forms.sql`.
+- Bind the Pages project to D1 as `TANDEM_DB`.
+- Run the site with Wrangler and test all native form journeys.
 - Add a real analytics provider such as Plausible, GA, or GTM.
-- Refresh screenshots after the community-first revision.
+- Refresh screenshots after final visual approval.
 - Deploy with Cloudflare Pages.
 - Add Open Graph social preview metadata.
-- Do one final mobile polish pass before sharing publicly.

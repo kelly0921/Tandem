@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Partner with Tandem</title>
+    <meta
+      name="description"
+      content="Partner with Tandem to co-host small curated dating experiences for thoughtful NYC singles."
+    />
+    <link rel="icon" type="image/png" href="../assets/brand/tandem-favicon-option3.png" />
+    <link rel="apple-touch-icon" href="../assets/brand/tandem-favicon-option3.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Tandem navigation">
+      <a class="brand" href="./" aria-label="Tandem home">
+        <img src="../assets/brand/tandem-mark-option3.png" alt="" width="36" height="36" />
+        <span>Tandem</span>
+      </a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="./#concept">Concept</a>
+        <a href="./#archetypes">Archetypes</a>
+        <a href="./quiz.html">Quiz</a>
+        <a href="./#how-it-works">How it works</a>
+        <a href="./partners.html" aria-current="page">Partners</a>
+      </nav>
+      <a class="button button-small button-outline" href="./join.html" data-analytics="cta_header_join">Join the list</a>
+    </header>
+
+    <main id="top">
+      <section class="content-band flow-page partner-band" id="partners" aria-labelledby="partners-title">
+        <div class="partner-inner">
+          <div class="partner-copy">
+            <p class="eyebrow">Founding collaboration</p>
+            <h1 id="partners-title"><span>Partner with</span> <span>Tandem.</span></h1>
+            <p>
+              For NYC communities, membership organizations, venues, and event partners interested in a
+              warmer way to help thoughtful singles meet.
+            </p>
+          </div>
+          <div class="partner-card">
+            <div class="partner-card-top">
+              <p>
+                Tandem handles the concept, curation, and participant experience. Partners help bring
+                together thoughtful people from their communities.
+              </p>
+              <ul>
+                <li>Curated dating experiences</li>
+                <li>Cross-community introductions</li>
+                <li>IRL, not networking</li>
+              </ul>
+            </div>
+
+            <form id="partnerForm" class="partner-form">
+              <label class="honeypot-field" aria-hidden="true">
+                Company
+                <input name="company" tabindex="-1" autocomplete="off" />
+              </label>
+              <label>
+                Name
+                <input name="name" autocomplete="name" maxlength="120" required />
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" autocomplete="email" maxlength="160" required />
+              </label>
+              <label>
+                Organization / community
+                <input name="organization" maxlength="180" required />
+              </label>
+              <label>
+                Website or social link <span class="optional">optional</span>
+                <input name="website_or_social" maxlength="240" />
+              </label>
+              <label>
+                Organization type
+                <select name="organization_type" required>
+                  <option value="">Select one</option>
+                  <option value="community">Community</option>
+                  <option value="membership-organization">Membership organization</option>
+                  <option value="venue">Venue</option>
+                  <option value="event-partner">Event partner</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+              <label>
+                Approximate NYC audience size <span class="optional">optional</span>
+                <input name="audience_size" maxlength="80" />
+              </label>
+              <label class="wide-field">
+                What kind of collaboration are you interested in?
+                <textarea name="collaboration_interest" maxlength="900" rows="3" required></textarea>
+              </label>
+              <label class="wide-field">
+                Notes <span class="optional">optional</span>
+                <textarea name="notes" maxlength="900" rows="3"></textarea>
+              </label>
+              <p class="form-error" id="partnerError" aria-live="polite"></p>
+              <button class="button button-outline" type="submit" data-analytics="cta_partner">Send partner inquiry</button>
+            </form>
+
+            <div class="partner-success" id="partnerSuccess" hidden tabindex="-1">
+              <p class="eyebrow">Partner inquiry sent.</p>
+              <h3>Thank you for thinking with Tandem.</h3>
+              <p>We will review fit for early NYC editions and follow up when a collaboration path makes sense.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-cta">
+      <p>Joining as a participant?</p>
+      <a class="button button-primary" href="./join.html" data-analytics="cta_footer_join">Join the list</a>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

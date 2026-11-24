@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tandem Quiz - Find Your Ambition Archetype</title>
+    <meta
+      name="description"
+      content="Take Tandem's Ambition Archetype Quiz with no signup required and get a reflective read on how you approach ambition and building a life."
+    />
+    <link rel="icon" type="image/png" href="../assets/brand/tandem-favicon-option3.png" />
+    <link rel="apple-touch-icon" href="../assets/brand/tandem-favicon-option3.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Tandem navigation">
+      <a class="brand" href="./" aria-label="Tandem home">
+        <img src="../assets/brand/tandem-mark-option3.png" alt="" width="36" height="36" />
+        <span>Tandem</span>
+      </a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="./#concept">Concept</a>
+        <a href="./#archetypes">Archetypes</a>
+        <a href="./quiz.html" aria-current="page">Quiz</a>
+        <a href="./#how-it-works">How it works</a>
+        <a href="./partners.html">Partners</a>
+      </nav>
+      <a class="button button-small button-outline" href="./join.html" data-analytics="cta_header_join">Join the list</a>
+    </header>
+
+    <main id="top">
+      <section class="content-band flow-page quiz-band" id="quiz" aria-labelledby="quiz-title">
+        <div class="flow-page-hero">
+          <p class="eyebrow">Ambition Archetype Quiz</p>
+          <h1 id="quiz-title"><span>How do you</span> <span>build your life?</span></h1>
+          <p>
+            Take the quiz first. No name or email required. If the result feels right, you can use it
+            later when you join the founding list.
+          </p>
+        </div>
+
+        <div class="quiz-shell" id="quizShell">
+          <div class="quiz-intro" id="quizIntro">
+            <div>
+              <p class="eyebrow">Small Tandem read</p>
+              <h3>Ambition does not look the same on everyone.</h3>
+              <p>
+                This quiz is for reflection and discovery. It does not ask for your name, email, gender,
+                age, location, dating preferences, or social profiles.
+              </p>
+            </div>
+            <button class="button button-primary" type="button" id="quizStart">Find my archetype</button>
+          </div>
+
+          <form class="quiz-form" id="quizForm" hidden>
+            <div class="flow-progress">
+              <span id="quizStepLabel">Question 1 of 8</span>
+              <span>No signup needed</span>
+              <div class="progress-track" aria-hidden="true"><span id="quizProgressBar"></span></div>
+            </div>
+            <div class="question-card">
+              <p class="eyebrow">Choose what feels closest</p>
+              <h3 id="quizQuestionText"></h3>
+              <p id="quizQuestionHint"></p>
+              <div class="quiz-options" id="quizOptions" role="group" aria-labelledby="quizQuestionText"></div>
+              <p class="form-error" id="quizError" aria-live="polite"></p>
+            </div>
+            <div class="flow-actions">
+              <button class="button button-outline" type="button" id="quizBack">Back</button>
+              <button class="button button-primary" type="button" id="quizNext">Continue</button>
+            </div>
+          </form>
+
+          <div class="quiz-result" id="quizResult" hidden tabindex="-1">
+            <div class="result-portrait">
+              <img id="resultImage" src="../assets/archetypes/tandem-archetype-builder-v2.png" alt="" />
+            </div>
+            <div class="result-copy">
+              <p class="eyebrow">Your Tandem archetype</p>
+              <h3 id="resultTitle">You are a Builder.</h3>
+              <p class="result-headline" id="resultHeadline"></p>
+              <p id="resultDescription"></p>
+              <div class="secondary-energy">
+                <span>Your secondary energy</span>
+                <strong id="resultSecondary"></strong>
+              </div>
+              <p class="result-disclaimer" id="resultDisclaimer"></p>
+              <form class="result-email-card" id="resultEmailForm" novalidate>
+                <input type="hidden" name="primary_archetype" />
+                <input type="hidden" name="secondary_archetype" />
+                <label class="honeypot-field" aria-hidden="true">
+                  Company
+                  <input name="company" tabindex="-1" autocomplete="off" />
+                </label>
+                <div class="result-email-copy">
+                  <p class="eyebrow">Save your result</p>
+                  <h4>Want this sent to you?</h4>
+                  <p>Enter your email after seeing your result. No account needed.</p>
+                </div>
+                <div class="form-grid result-email-grid">
+                  <label>
+                    First name <span class="optional">optional</span>
+                    <input name="first_name" autocomplete="given-name" maxlength="80" />
+                  </label>
+                  <label>
+                    Email
+                    <input name="email" type="email" autocomplete="email" maxlength="160" required />
+                  </label>
+                </div>
+                <label class="consent-card result-email-consent">
+                  <input type="checkbox" name="marketing_consent" value="yes" />
+                  <span>Also send me occasional Tandem updates and founding-community invitations.</span>
+                </label>
+                <div class="result-email-actions">
+                  <button class="button button-outline" type="submit" id="resultEmailSubmit">Email me my result</button>
+                </div>
+                <p class="form-status" id="resultEmailStatus" aria-live="polite"></p>
+              </form>
+              <div class="result-actions">
+                <a class="button button-primary" href="./join.html" id="resultJoin" data-analytics="cta_result_join">Join the founding NYC community</a>
+                <button class="button button-outline" type="button" id="resultRetake">Retake the quiz</button>
+                <button class="button button-outline" type="button" id="resultShare">Share my archetype</button>
+              </div>
+              <p class="form-error" id="resultShareStatus" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-page-note">
+          <strong>Not a diagnosis. Not a compatibility score.</strong>
+          <p>Just a more interesting way to name how you approach ambition before you decide who might fit that rhythm.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-cta">
+      <p>Ready for the founding list?</p>
+      <a class="button button-primary" href="./join.html" data-analytics="cta_footer_join">Join the list</a>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "tandem-native-forms",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "tandem:export-community": "node scripts/export-d1.mjs community",
+    "tandem:export-partners": "node scripts/export-d1.mjs partners",
+    "tandem:export-results": "node scripts/export-d1.mjs results"
+  }
+}

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Join Tandem - Founding NYC Community</title>
+    <meta
+      name="description"
+      content="Join Tandem's founding NYC list for small curated dating experiences built around complementary ambition."
+    />
+    <link rel="icon" type="image/png" href="../assets/brand/tandem-favicon-option3.png" />
+    <link rel="apple-touch-icon" href="../assets/brand/tandem-favicon-option3.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Tandem navigation">
+      <a class="brand" href="./" aria-label="Tandem home">
+        <img src="../assets/brand/tandem-mark-option3.png" alt="" width="36" height="36" />
+        <span>Tandem</span>
+      </a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="./#concept">Concept</a>
+        <a href="./#archetypes">Archetypes</a>
+        <a href="./quiz.html">Quiz</a>
+        <a href="./#how-it-works">How it works</a>
+        <a href="./partners.html">Partners</a>
+      </nav>
+      <a class="button button-small button-outline" href="./join.html" aria-current="page" data-analytics="cta_header_join">Join the list</a>
+    </header>
+
+    <main id="top">
+      <span id="waitlist" class="anchor-offset" aria-hidden="true"></span>
+      <section class="content-band flow-page form-band" id="founding-list" aria-labelledby="founding-list-title">
+        <div class="flow-page-hero">
+          <p class="eyebrow">Founding NYC community</p>
+          <h1 id="founding-list-title"><span>Help shape the</span> <span>founding community.</span></h1>
+          <p>
+            We are starting intentionally: small curated experiences, thoughtful introductions, and
+            real-world gatherings. Founding members will be the first invited to upcoming NYC editions.
+          </p>
+          <div class="join-fit-summary" aria-label="Who should sign up">
+            <strong>Best fit right now:</strong>
+            <span>single in or near NYC, dating intentionally, and open to curated IRL gatherings.</span>
+          </div>
+          <div class="after-join-note" aria-label="What happens after joining">
+            <strong>Why we ask:</strong>
+            <span>the quiz is anonymous, but the founding list is private. We need contact info to review fit and send invitations.</span>
+          </div>
+        </div>
+
+        <div class="native-flow community-flow">
+          <form id="communityForm" class="native-form" novalidate>
+            <input type="hidden" name="primary_archetype" />
+            <input type="hidden" name="secondary_archetype" />
+            <input type="hidden" name="signup_source" value="direct" />
+            <input type="hidden" name="referral_source" />
+            <label class="honeypot-field" aria-hidden="true">
+              Company
+              <input name="company" tabindex="-1" autocomplete="off" />
+            </label>
+
+            <div class="flow-progress">
+              <span id="communityStepLabel">Step 1 of 4</span>
+              <span>2-3 minutes</span>
+              <div class="progress-track" aria-hidden="true"><span id="communityProgressBar"></span></div>
+            </div>
+
+            <fieldset class="form-step is-active" data-step="0">
+              <legend>
+                <span>First, a little about you.</span>
+                <small>This helps us understand the founding NYC community without asking for more than we need.</small>
+              </legend>
+              <div class="form-grid">
+                <label>
+                  First name
+                  <input name="first_name" autocomplete="given-name" maxlength="80" required />
+                </label>
+                <label>
+                  Email
+                  <input name="email" type="email" autocomplete="email" maxlength="160" required />
+                </label>
+              </div>
+              <div class="choice-group" role="group" aria-label="Age range">
+                <p>Age range</p>
+                <label class="choice-card"><input type="radio" name="age_range" value="21-24" required /> <span>21-24</span></label>
+                <label class="choice-card"><input type="radio" name="age_range" value="25-27" /> <span>25-27</span></label>
+                <label class="choice-card"><input type="radio" name="age_range" value="28-30" /> <span>28-30</span></label>
+                <label class="choice-card"><input type="radio" name="age_range" value="31-34" /> <span>31-34</span></label>
+                <label class="choice-card"><input type="radio" name="age_range" value="35-plus" /> <span>35+</span></label>
+              </div>
+              <div class="choice-group" role="group" aria-label="Location">
+                <p>Where are you based?</p>
+                <label class="choice-card"><input type="radio" name="location_area" value="nyc" required /> <span>NYC</span></label>
+                <label class="choice-card"><input type="radio" name="location_area" value="nyc-metro" /> <span>NYC metro</span></label>
+                <label class="choice-card"><input type="radio" name="location_area" value="other" /> <span>Other</span></label>
+              </div>
+              <label>
+                Borough or general neighborhood <span class="optional">optional</span>
+                <input name="neighborhood" autocomplete="address-level2" maxlength="120" />
+              </label>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="1" hidden>
+              <legend>
+                <span>Who would you like Tandem to introduce you to?</span>
+                <small>We use this only to understand whether we can assemble viable Tandem cohorts.</small>
+              </legend>
+              <div class="choice-group" role="group" aria-label="Gender identity">
+                <p>Gender identity</p>
+                <label class="choice-card"><input type="radio" name="gender_identity" value="woman" required /> <span>Woman</span></label>
+                <label class="choice-card"><input type="radio" name="gender_identity" value="man" /> <span>Man</span></label>
+                <label class="choice-card"><input type="radio" name="gender_identity" value="nonbinary" /> <span>Nonbinary</span></label>
+                <label class="choice-card"><input type="radio" name="gender_identity" value="self-describe" /> <span>Self-describe</span></label>
+                <label class="choice-card"><input type="radio" name="gender_identity" value="prefer-not" /> <span>Prefer not to say</span></label>
+              </div>
+              <label>
+                Self-description <span class="optional">optional</span>
+                <input name="gender_self_description" maxlength="120" />
+              </label>
+              <div
+                class="choice-group"
+                role="group"
+                aria-label="Interested in meeting"
+                data-required-group="interested_in"
+                data-error="Please choose who you are interested in meeting."
+              >
+                <p>Interested in meeting</p>
+                <label class="choice-card"><input type="checkbox" name="interested_in" value="women" /> <span>Women</span></label>
+                <label class="choice-card"><input type="checkbox" name="interested_in" value="men" /> <span>Men</span></label>
+                <label class="choice-card"><input type="checkbox" name="interested_in" value="nonbinary" /> <span>Nonbinary people</span></label>
+                <label class="choice-card wide-choice"><input type="checkbox" name="interested_in" value="open-across-genders" /> <span>Open to people across genders</span></label>
+              </div>
+              <p class="field-note">Your answers are not displayed publicly or shared with community partners.</p>
+              <div class="choice-group" role="group" aria-label="Relationship intention">
+                <p>Relationship intention</p>
+                <label class="choice-card wide-choice"><input type="radio" name="relationship_intention" value="serious" required /> <span>Looking for a serious relationship</span></label>
+                <label class="choice-card wide-choice"><input type="radio" name="relationship_intention" value="intentional-open" /> <span>Dating intentionally and open to a relationship</span></label>
+                <label class="choice-card wide-choice"><input type="radio" name="relationship_intention" value="right-person" /> <span>Open to meeting the right person</span></label>
+                <label class="choice-card wide-choice"><input type="radio" name="relationship_intention" value="figuring-out" /> <span>Still figuring out what I want</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="2" hidden>
+              <legend>
+                <span>What brought you here?</span>
+                <small>This helps shape early Tandem experiences without turning signup into an interview.</small>
+              </legend>
+              <div class="choice-group" role="group" aria-label="Event interest">
+                <p>Would you attend a curated Tandem experience in NYC?</p>
+                <label class="choice-card wide-choice"><input type="radio" name="event_interest" value="yes-invite" required /> <span>Yes - I would want an invitation</span></label>
+                <label class="choice-card wide-choice"><input type="radio" name="event_interest" value="probably" /> <span>Probably - tell me more</span></label>
+                <label class="choice-card wide-choice"><input type="radio" name="event_interest" value="maybe-later" /> <span>Maybe later</span></label>
+                <label class="choice-card wide-choice"><input type="radio" name="event_interest" value="archetype-community" /> <span>I am mainly interested in the archetype/community</span></label>
+              </div>
+              <div class="choice-group" role="group" aria-label="Availability">
+                <p>When are you generally available?</p>
+                <label class="choice-card"><input type="checkbox" name="availability" value="weekday-evenings" /> <span>Weekday evenings</span></label>
+                <label class="choice-card"><input type="checkbox" name="availability" value="friday-evenings" /> <span>Friday evenings</span></label>
+                <label class="choice-card"><input type="checkbox" name="availability" value="saturday" /> <span>Saturday</span></label>
+                <label class="choice-card"><input type="checkbox" name="availability" value="sunday" /> <span>Sunday</span></label>
+                <label class="choice-card"><input type="checkbox" name="availability" value="flexible" /> <span>Flexible</span></label>
+              </div>
+              <label>
+                What made Tandem interesting to you? <span class="optional">optional</span>
+                <textarea name="interest_reason" maxlength="700" rows="4"></textarea>
+              </label>
+              <label>
+                How did you hear about Tandem?
+                <select name="acquisition_source" required>
+                  <option value="">Select one</option>
+                  <option value="friend">Friend</option>
+                  <option value="community">Community or organization</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="linkedin">LinkedIn</option>
+                  <option value="event">Event</option>
+                  <option value="search">Search or online</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="3" hidden>
+              <legend>
+                <span>One last thing.</span>
+                <small>Optional context and a clear yes/no on future Tandem updates.</small>
+              </legend>
+              <label>
+                Instagram or LinkedIn <span class="optional">optional</span>
+                <input name="social_link" maxlength="240" />
+              </label>
+              <div class="archetype-carry" id="communityArchetypeNote">
+                <strong>Haven't taken the quiz? That's okay.</strong>
+                <span>You can join the founding list now and <a href="./quiz.html">find your archetype later</a>.</span>
+              </div>
+              <label class="consent-card">
+                <input type="checkbox" name="marketing_consent" value="yes" />
+                <span>I would like to hear about future Tandem experiences and founding-community updates.</span>
+              </label>
+            </fieldset>
+
+            <p class="form-error" id="communityError" aria-live="polite"></p>
+            <div class="flow-actions">
+              <button class="button button-outline" type="button" id="communityBack">Back</button>
+              <button class="button button-primary" type="button" id="communityNext">Continue</button>
+              <button class="button button-primary" type="submit" id="communitySubmit" hidden>Join the founding list</button>
+            </div>
+          </form>
+
+          <div class="confirmation-card" id="communitySuccess" hidden tabindex="-1">
+            <p class="eyebrow">You are on the founding list.</p>
+            <h3>We are starting small and intentionally.</h3>
+            <p>
+              As we build balanced NYC groups, we will invite people to early Tandem experiences gradually.
+              If you were already on the list, your latest preferences are now the ones we will use.
+            </p>
+            <div class="next-steps">
+              <span>In the meantime</span>
+              <a href="./quiz.html">Discover your archetype</a>
+              <a href="./partners.html">Bring Tandem to a community</a>
+            </div>
+            <div class="referral-box">
+              <label>
+                Know someone who belongs in this community?
+                <input id="referralLink" readonly value="" />
+              </label>
+              <button class="button button-outline" type="button" id="referralShare">Share invite link</button>
+              <p class="form-error" id="referralCopyStatus" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="privacy-note" id="privacy">
+          <p class="eyebrow">Privacy and discretion</p>
+          <h3>Your dating context stays private.</h3>
+          <p>
+            The archetype quiz does not require identity. This founding-list form does, because Tandem
+            needs a way to review fit and send invitations. Dating preferences and private responses are
+            not publicly displayed, and co-hosting partners do not receive participant-level answers without consent.
+          </p>
+          <a href="./privacy.html">Read the working privacy note</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-cta">
+      <p>Want to reflect first?</p>
+      <a class="button button-primary" href="./quiz.html" data-analytics="cta_footer_quiz">Take the quiz</a>
+    </footer>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
